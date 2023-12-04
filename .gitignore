@@ -5,7 +5,7 @@ target/
 
 ### IntelliJ IDEA ###
 .idea/**
-/.idea/sonarlint/**/*.pb
+/.idea/sonarlint/**
 .idea/modules.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml
