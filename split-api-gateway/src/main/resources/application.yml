@@ -1,0 +1,40 @@
+server:
+  port: 8080
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: ${split.front-end-url}
+            allowedMethods: '*'
+            allowedHeaders: '*'
+      routes:
+        - id: index-service
+          uri: ${constancy.index-service.url}
+          predicates:
+            - Path=/**
+        - id: organization-service
+          uri: ${constancy.organization-service.url}
+          predicates:
+            - Path=/organizations/**
+      default-filters:
+        - TokenRelay
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: constancy-java-client
+            client-secret: ICMPT365ZyRAgTYZWp1Fidzhj5oSXr2g
+            authorization-grant-type: authorization_code
+            scope: openid
+        provider:
+          keycloak:
+            issuer-uri: ${constancy.keycloak.url}/realms/constancy
+            user-name-attribute: preferred_username
+split:
+  front-end-url: 'http://localhost:4200'
