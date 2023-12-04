@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.jonathanlee.splitapiusersservice.UserMapper">
+  <resultMap id="listUsers" type="UserVO" autoMapping="true">
+    <result property="id" column="ID" />
+    <result property="firstName" column="FIRSTNAME" />
+    <result property="lastName" column="LASTNAME" />
+    <result property="createdAt" column="CREATEDAT" />
+    <result property="updatedAt" column="UPDATEDAT" />
+  </resultMap>
+
+  <insert id="insertUser" keyProperty="id" useGeneratedKeys="true">
+    INSERT INTO users (firstName, lastName)
+    VALUES (#{firstName}, #{lastName})
+  </insert>
+  
+  <select id="getAllUsers" flushCache="true" resultMap="listUsers">
+    SELECT * FROM users
+  </select>
+</mapper>
