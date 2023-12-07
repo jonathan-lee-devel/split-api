@@ -1,3 +1,4 @@
+split-api-gateway/src/main/resources/*-secret.yml
 split-api-users-service/src/main/resources/*-secret.yml
 
 target/
