@@ -66,11 +66,6 @@
 			<artifactId>mybatis</artifactId>
 			<version>3.5.13</version>
 		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>io.jsonwebtoken</groupId>-->
-<!--			<artifactId>jjwt</artifactId>-->
-<!--			<version>0.12.3</version>-->
-<!--		</dependency>-->
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-api</artifactId>
@@ -99,6 +94,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<imageName>jonathanleedev/${project.artifactId}</imageName>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
