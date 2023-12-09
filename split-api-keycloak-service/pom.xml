@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>io.jonathanlee</groupId>
 	<artifactId>split-api-keycloak-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.3</version>
 	<name>split-api-keycloak-service</name>
 	<description>Keycloak proxy service for Split</description>
 	<properties>
@@ -44,6 +44,11 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.5.13</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

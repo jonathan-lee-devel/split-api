@@ -18,6 +18,7 @@
   <modules>
     <module>split-api-gateway</module>
     <module>split-api-users-service</module>
+    <module>split-api-keycloak-service</module>
   </modules>
 
   <dependencies>

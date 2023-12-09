@@ -1,5 +1,6 @@
 split-api-gateway/src/main/resources/*-secret.yml
 split-api-users-service/src/main/resources/*-secret.yml
+split-api-keycloak-service/src/main/resources/*-secret.yml
 
 target/
 !.mvn/wrapper/maven-wrapper.jar
