@@ -6,4 +6,4 @@ mybatis:
   mapper-locations: config/mappers/*Mapper.xml
   type-aliases-package: io.jonathanlee.splitapiusersservice.domain
 server:
-  port: 8082
+  port: 8084
