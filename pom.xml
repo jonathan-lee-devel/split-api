@@ -21,6 +21,7 @@
     <module>split-api-keycloak-service</module>
     <module>split-api-properties-service</module>
     <module>split-api-expenses-service</module>
+    <module>split-api-mail-service</module>
   </modules>
 
   <dependencies>
