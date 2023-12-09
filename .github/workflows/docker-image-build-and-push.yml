@@ -27,11 +27,15 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
+      - name: Change Directory to Current Scope
+        run: cd ${{ matrix.scope }}
       - name: Get version
         run: |
           VERSION=$( mvn help:evaluate -Dexpression=project.version -q -DforceStdout )
           echo "::set-output name=version::$VERSION"
         id: get-version-from-pom
+      - name: Maven Clean Install
+        run: mvn clean install
       - name: Maven Build Docker Images
         run: mvn spring-boot:build-image
       - name: Login to Docker Hub
