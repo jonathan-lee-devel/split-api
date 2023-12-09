@@ -19,6 +19,8 @@
     <module>split-api-gateway</module>
     <module>split-api-users-service</module>
     <module>split-api-keycloak-service</module>
+    <module>split-api-properties-service</module>
+    <module>split-api-expenses-service</module>
   </modules>
 
   <dependencies>
