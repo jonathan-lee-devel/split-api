@@ -1,0 +1,7 @@
+apiVersion: v2
+appVersion: "0.1"
+description: An online platform for tracking expenses
+name: split
+version: 0.0.3
+sources:
+  - https://github.com/jonathan-lee-devel/split-api

@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "split.fullname" . }}-api-gateway-deployment
+  namespace: split-{{ .Values.environment.name }}
+  labels:
+    app: {{ template "split.fullname" . }}
+    chart: {{ template "split.chart" . }}
+    component: "{{ .Values.gateway.name }}"
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "split.fullname" . }}
+      component: "{{ .Values.gateway.name }}"
+      release: {{ .Release.Name }}
+  replicas: {{ .Values.replicaCount }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: {{ template "split.fullname" . }}
+        component: "{{ .Values.gateway.name }}"
+        release: {{ .Release.Name }}
+    spec:
+      securityContext:
+        runAsUser: 1000
+      containers:
+        - name: {{ template "split.fullname" . }}-api-gateway
+          image: "{{ .Values.gateway.image.repository }}:{{ .Values.gateway.image.tag }}"
+          imagePullPolicy: "{{ .Values.gateway.image.pullPolicy }}"
+          ports:
+            - containerPort: {{ .Values.gateway.port }}
+          resources: {}
+          livenessProbe:
+            httpGet:
+              port: {{ .Values.gateway.port }}
+              path: /
+            initialDelaySeconds: 3
+            periodSeconds: 3
+      restartPolicy: Always
+status: {}

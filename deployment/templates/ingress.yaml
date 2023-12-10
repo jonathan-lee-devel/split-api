@@ -1,0 +1,36 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: split-{{ .Values.environment.name }}-ingress
+  namespace: split-{{ .Values.environment.name }}
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+      - {{ .Values.environment.hostPrefix }}split.direct
+      - api.{{ .Values.environment.hostPrefix }}split.direct
+      secretName: split-tls-{{ .Values.environment.name }}
+  rules:
+    - host: api.{{ .Values.environment.hostPrefix }}split.direct
+      http:
+        paths:
+          - backend:
+              service:
+                name: {{ .Values.applicationName }}-api-users-service
+                port:
+                  number: {{ .Values.usersService.port }}
+            pathType: Prefix
+            path: /users
+    - host: {{ .Values.environment.hostPrefix }}split.direct
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.applicationName }}-ui-service
+                port:
+                  number: {{ .Values.ui.port }}

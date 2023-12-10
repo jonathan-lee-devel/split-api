@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "split.fullname" . }}-api-users-service-deployment
+  namespace: split-{{ .Values.environment.name }}
+  labels:
+    app: {{ template "split.fullname" . }}
+    chart: {{ template "split.chart" . }}
+    component: "{{ .Values.usersService.name }}"
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "split.fullname" . }}
+      component: "{{ .Values.usersService.name }}"
+      release: {{ .Release.Name }}
+  replicas: {{ .Values.replicaCount }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: {{ template "split.fullname" . }}
+        component: "{{ .Values.usersService.name }}"
+        release: {{ .Release.Name }}
+    spec:
+      securityContext:
+        runAsUser: 1000
+      containers:
+        - name: {{ template "split.fullname" . }}-api-users-service
+          image: "{{ .Values.usersService.image.repository }}:{{ .Values.usersService.image.tag }}"
+          imagePullPolicy: "{{ .Values.usersService.image.pullPolicy }}"
+          ports:
+            - containerPort: {{ .Values.usersService.port }}
+          resources: {}
+          livenessProbe:
+            httpGet:
+              port: {{ .Values.usersService.port }}
+              path: /
+            initialDelaySeconds: 3
+            periodSeconds: 3
+      restartPolicy: Always
+status: {}

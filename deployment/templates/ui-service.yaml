@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.applicationName }}-ui-service
+  namespace: split-{{ .Values.environment.name }}
+  labels:
+    app: {{ .Values.applicationName }}
+    chart: {{ template "split.chart" . }}
+    component: "{{ .Values.ui.name }}"
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  ports:
+    - name: http
+      port: {{ .Values.ui.port }}
+      targetPort: {{ .Values.ui.port }}
+  selector:
+    app: {{ template "split.fullname" . }}
+    component: "{{ .Values.ui.name }}"
+    release: {{ .Release.Name }}

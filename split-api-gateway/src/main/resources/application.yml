@@ -1,21 +1,29 @@
 server:
-  port: 8081
+  port: 8080
 spring:
   security:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/auth/realms/split
-          jwk-set-uri: http://localhost:8080/realms/split/protocol/openid-connect/certs
+          issuer-uri: https://keycloak-service:8443/auth/realms/split
+          jwk-set-uri: https://keycloak-service:8443/realms/split/protocol/openid-connect/certs
   cloud:
     gateway:
       routes:
         - id: users-route
-          uri: ${USERS_ROUTE_URI:http://localhost:8082}
+          uri: http://split-direct-api-users-service:8080
           predicates:
             - Path=/users/**
+        - id: properties-route
+          uri: http://split-direct-api-properties-service:8080
+          predicates:
+            - Path=/properties/**
+        - id: expenses-route
+          uri: http://split-direct-api-expenses-service:8080
+          predicates:
+            - Path=/expenses/**
       default-filters:
         - TokenAuthHeader=
 split:
   jwt:
-    jwk-set-uri: http://localhost:8080/realms/split/protocol/openid-connect/certs
+    jwk-set-uri: https://keycloak-service:8443/realms/split/protocol/openid-connect/certs
