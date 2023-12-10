@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>io.jonathanlee</groupId>
 	<artifactId>split-api-properties-service</artifactId>
-	<version>0.0.5</version>
+	<version>0.0.6</version>
 	<name>split-api-properties-service</name>
 	<description>Properties service for Split</description>
 	<properties>
@@ -74,6 +74,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<imageName>jonathanleedev/${project.artifactId}:${project.version}</imageName>
+					<jvmArguments>-Xms2048m -Xmx4096m</jvmArguments>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>

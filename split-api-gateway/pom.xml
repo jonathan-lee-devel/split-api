@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>io.jonathanlee</groupId>
 	<artifactId>split-api-gateway</artifactId>
-	<version>0.0.5</version>
+	<version>0.0.6</version>
 	<name>split-api-gateway</name>
 	<description>API gateway for Split application</description>
 	<properties>
@@ -70,6 +70,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<imageName>jonathanleedev/${project.artifactId}:${project.version}</imageName>
+					<jvmArguments>-Xms2048m -Xmx4096m</jvmArguments>
 				</configuration>
 			</plugin>
 		</plugins>

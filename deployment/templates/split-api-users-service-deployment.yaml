@@ -35,7 +35,11 @@ spec:
           imagePullPolicy: "{{ .Values.usersService.image.pullPolicy }}"
           ports:
             - containerPort: {{ .Values.usersService.port }}
-          resources: {}
+          resources:
+            requests:
+              memory: "4096Mi"
+            limits:
+              memory: "4096Mi"
           livenessProbe:
             httpGet:
               port: {{ .Values.usersService.port }}

@@ -37,9 +37,9 @@ spec:
             - containerPort: {{ .Values.gateway.port }}
           resources:
             requests:
-              memory: "1000Mi"
+              memory: "4096Mi"
             limits:
-              memory: "2000Mi"
+              memory: "4096Mi"
           livenessProbe:
             httpGet:
               port: {{ .Values.gateway.port }}
