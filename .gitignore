@@ -4,6 +4,8 @@ split-api-keycloak-service/src/main/resources/*-secret.yml
 split-api-properties-service/src/main/resources/*-secret.yml
 split-api-expenses-service/src/main/resources/*-secret.yml
 
+k8s/
+
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
