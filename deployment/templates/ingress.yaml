@@ -19,11 +19,11 @@ spec:
         paths:
           - backend:
               service:
-                name: {{ .Values.applicationName }}-api-users-service
+                name: {{ .Values.applicationName }}-api-gateway-service
                 port:
-                  number: {{ .Values.usersService.port }}
+                  number: {{ .Values.gateway.port }}
             pathType: Prefix
-            path: /users
+            path: /
     - host: {{ .Values.environment.hostPrefix }}split.direct
       http:
         paths:

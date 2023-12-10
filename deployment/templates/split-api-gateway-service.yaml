@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.applicationName }}-api-expenses-service
+  name: {{ .Values.applicationName }}-api-gateway-service
   namespace: split-{{ .Values.environment.name }}
   labels:
     app: {{ .Values.applicationName }}
     chart: {{ template "split.chart" . }}
-    component: "{{ .Values.expensesService.name }}"
+    component: "{{ .Values.gateway.name }}"
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
@@ -17,5 +17,5 @@ spec:
       targetPort: {{ .Values.expensesService.port }}
   selector:
     app: {{ template "split.fullname" . }}
-    component: "{{ .Values.expensesService.name }}"
+    component: "{{ .Values.gateway.name }}"
     release: {{ .Release.Name }}
