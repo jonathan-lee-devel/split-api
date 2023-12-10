@@ -9,7 +9,7 @@ keycloak:
     repository: jonathanleedev/split-keycloak
     tag: 0.0.3
     pullPolicy: Always
-  port: 8080
+  port: 8443
 ui:
   name: ui
   image:

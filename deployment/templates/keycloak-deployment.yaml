@@ -51,11 +51,16 @@ spec:
                secretKeyRef:
                  key: KEYCLOAK_ADMIN_PASSWORD
                  name: split-keycloak-admin-password
+           - name: KC_HOSTNAME
+             valueFrom:
+               secretKeyRef:
+                 key: KC_HOSTNAME
+                 name: split-keycloak-hostname
           resources: {}
           livenessProbe:
             httpGet:
               port: {{ .Values.keycloak.port }}
-              path: /
+              path: /health/ready
             initialDelaySeconds: 3
             periodSeconds: 3
       restartPolicy: Always
