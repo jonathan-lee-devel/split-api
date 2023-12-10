@@ -33,4 +33,4 @@ spec:
               service:
                 name: {{ .Values.applicationName }}-ui-service
                 port:
-                  number: tp{{ .Values.ui.port }}
+                  number: {{ .Values.ui.port }}
