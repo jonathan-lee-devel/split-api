@@ -3,6 +3,13 @@ replicaCount: 1
 environment:
   name: staging
   hostPrefix: staging.
+keycloak:
+  name: keycloak
+  image:
+    repository: jonathanleedev/split-keycloak
+    tag: 0.0.3
+    pullPolicy: Always
+  port: 8443
 ui:
   name: ui
   image:

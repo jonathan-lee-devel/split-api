@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "split.fullname" . }}-keycloak-deployment
+  namespace: split-{{ .Values.environment.name }}
+  labels:
+    app: {{ template "split.fullname" . }}
+    chart: {{ template "split.chart" . }}
+    component: "{{ .Values.keycloak.name }}"
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "split.fullname" . }}
+      component: "{{ .Values.keycloak.name }}"
+      release: {{ .Release.Name }}
+  replicas: {{ .Values.replicaCount }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: {{ template "split.fullname" . }}
+        component: "{{ .Values.keycloak.name }}"
+        release: {{ .Release.Name }}
+    spec:
+      securityContext:
+        runAsUser: 1000
+      containers:
+        - name: {{ template "split.fullname" . }}-keycloak
+          image: "{{ .Values.keycloak.image.repository }}:{{ .Values.keycloak.image.tag }}"
+          imagePullPolicy: "{{ .Values.keycloak.image.pullPolicy }}"
+          ports:
+            - containerPort: {{ .Values.keycloak.port }}
+          resources: {}
+          livenessProbe:
+            httpGet:
+              port: {{ .Values.keycloak.port }}
+              path: /
+            initialDelaySeconds: 3
+            periodSeconds: 3
+      restartPolicy: Always
+status: {}
