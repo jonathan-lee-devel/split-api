@@ -21,27 +21,27 @@ gateway:
   name: split-api-gateway
   image:
     repository: jonathanleedev/split-api-gateway
-    tag: 0.0.3
+    tag: 0.0.4
     pullPolicy: Always
   port: 8080
 usersService:
   name: split-api-users-service
   image:
     repository: jonathanleedev/split-api-users-service
-    tag: 0.0.3
+    tag: 0.0.4
     pullPolicy: Always
   port: 8080
 propertiesService:
   name: split-api-properties-service
   image:
     repository: jonathanleedev/split-api-properties-service
-    tag: 0.0.3
+    tag: 0.0.4
     pullPolicy: Always
   port: 8080
 expensesService:
   name: split-api-expenses-service
   image:
     repository: jonathanleedev/split-api-expenses-service
-    tag: 0.0.3
+    tag: 0.0.4
     pullPolicy: Always
   port: 8080

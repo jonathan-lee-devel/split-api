@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>io.jonathanlee</groupId>
 	<artifactId>split-api-keycloak-service</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.4</version>
 	<name>split-api-keycloak-service</name>
 	<description>Keycloak proxy service for Split</description>
 	<properties>

@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>io.jonathanlee</groupId>
-	<artifactId>split-api-properties-service</artifactId>
-	<version>0.0.4</version>
-	<name>split-api-properties-service</name>
-	<description>Properties service for Split</description>
+	<artifactId>split-api-expenses-service</artifactId>
+	<version>0.0.3</version>
+	<name>split-api-expenses-service</name>
+	<description>Expenses service for Split</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

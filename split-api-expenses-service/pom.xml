@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>io.jonathanlee</groupId>
 	<artifactId>split-api-expenses-service</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.4</version>
 	<name>split-api-expenses-service</name>
 	<description>Expenses service for Split</description>
 	<properties>

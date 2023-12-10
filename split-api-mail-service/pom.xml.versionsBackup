@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>io.jonathanlee</groupId>
-	<artifactId>split-api-properties-service</artifactId>
-	<version>0.0.4</version>
-	<name>split-api-properties-service</name>
-	<description>Properties service for Split</description>
+	<artifactId>split-api-mail-service</artifactId>
+	<version>0.0.3</version>
+	<name>split-api-mail-service</name>
+	<description>E-mail service for Split</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -20,6 +20,10 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

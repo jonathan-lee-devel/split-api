@@ -34,3 +34,10 @@ spec:
                 name: {{ .Values.applicationName }}-ui-service
                 port:
                   number: {{ .Values.ui.port }}
+          - path: /keycloak
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.applicationName }}-keycloak-service
+                port:
+                  number: {{ .Values.keycloak.port }}

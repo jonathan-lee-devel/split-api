@@ -1,9 +1,11 @@
+server:
+  port: 8080
 spring:
-  profiles:
-    active: default
-    include: secret
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DATASOURCE_URL}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
 mybatis:
   mapper-locations: config/mappers/*Mapper.xml
   type-aliases-package: io.jonathanlee.splitapiusersservice.domain
-server:
-  port: 8080

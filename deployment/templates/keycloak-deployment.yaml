@@ -35,6 +35,22 @@ spec:
           imagePullPolicy: "{{ .Values.keycloak.image.pullPolicy }}"
           ports:
             - containerPort: {{ .Values.keycloak.port }}
+          env:
+           - name: KC_DB_URL
+             valueFrom:
+               secretKeyRef:
+                 key: KC_DB_URL
+                 name: split-keycloak-db-url
+           - name: KEYCLOAK_ADMIN
+             valueFrom:
+               secretKeyRef:
+                 key: KEYCLOAK_ADMIN
+                 name: split-keycloak-admin
+           - name: KEYCLOAK_ADMIN_PASSWORD
+             valueFrom:
+               secretKeyRef:
+                 key: KEYCLOAK_ADMIN_PASSWORD
+                 name: split-keycloak-admin-password
           resources: {}
           livenessProbe:
             httpGet:

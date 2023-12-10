@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>io.jonathanlee</groupId>
 	<artifactId>split-api-mail-service</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.4</version>
 	<name>split-api-mail-service</name>
 	<description>E-mail service for Split</description>
 	<properties>

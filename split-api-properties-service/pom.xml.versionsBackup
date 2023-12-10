@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>io.jonathanlee</groupId>
 	<artifactId>split-api-properties-service</artifactId>
-	<version>0.0.4</version>
+	<version>0.0.3</version>
 	<name>split-api-properties-service</name>
 	<description>Properties service for Split</description>
 	<properties>
